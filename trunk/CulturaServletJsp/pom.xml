@@ -128,7 +128,18 @@
       <releases>
         <enabled>false</enabled>
       </releases>
-    </repository>    
+    </repository>  
+    <repository>
+      <id>codehaus-snapshots</id>
+      <name>Codehaus Snapshot Repo</name>
+      <url>https://nexus.codehaus.org</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+          <enabled>true</enabled>
+      </snapshots>
+    </repository>     
     </repositories>
     <pluginRepositories>
 
