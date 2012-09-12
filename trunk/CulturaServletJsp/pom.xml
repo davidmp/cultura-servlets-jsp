@@ -96,5 +96,17 @@
             <name>Repository for library Library[junit_4]</name>
         </repository>                     
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+        <id>codehaus</id>
+        <name>Codehaus Release Repo</name>
+        <url>http://repository.codehaus.org</url>
+        </pluginRepository>
+        <pluginRepository>
+        <id>codehaus-snapshot</id>
+        <name>Codehaus Snapshot Repo</name>
+        <url>http://snapshots.repository.codehaus.org</url>
+        </pluginRepository>
+    </pluginRepositories>    
     
 </project>
