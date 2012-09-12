@@ -31,8 +31,7 @@
                 <groupId>postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>8.4-702.jdbc3</version>
-        </dependency>
-                    
+        </dependency>                    
     </dependencies>
 
     <build>
@@ -90,9 +89,7 @@
             <id>junit_4</id>
             <layout>default</layout>
             <name>Repository for library Library[junit_4]</name>
-        </repository>
-              
-        
+        </repository>                     
     </repositories>
     
 </project>
