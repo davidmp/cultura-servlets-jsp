@@ -94,7 +94,12 @@
             <id>junit_4</id>
             <layout>default</layout>
             <name>Repository for library Library[junit_4]</name>
-        </repository>                     
+        </repository> 
+    <repository>
+      <id>codehaus</id>
+      <name>Codehaus Release Repo</name>
+      <url>http://dist.codehaus.org/</url>
+    </repository>        
     </repositories>
     <pluginRepositories>
         <pluginRepository>
