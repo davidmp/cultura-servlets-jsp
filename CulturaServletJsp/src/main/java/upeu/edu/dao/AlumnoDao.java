@@ -6,6 +6,8 @@ package upeu.edu.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
+
 import upeu.edu.to.AlumnoTo;
 import upeu.edu.util.DBConn;
 /**
@@ -14,6 +16,7 @@ import upeu.edu.util.DBConn;
  */ 
 public class AlumnoDao extends DBConn{
   
+    Logger logeeri=Logger.getLogger(AlumnoDao.class) ;
     
     public boolean insertarAlumno(AlumnoTo to) {
         boolean r=false;
@@ -33,10 +36,10 @@ public class AlumnoDao extends DBConn{
 
             if (ps.executeUpdate() == 1) {
                 r=true;    
-                System.out.println("Insertado!!!");
+                logeeri.info("Insertado!!!");
             }
         } catch (Exception e) {
-            System.out.println("cat"+e.getMessage());
+            logeeri.info("cat"+e.getMessage());
         }
  
         return r;
@@ -89,7 +92,7 @@ public class AlumnoDao extends DBConn{
             lista.add(alumno);
             
             }
-        } catch (Exception e) { System.out.println(e.getMessage());    }
+        } catch (Exception e) { logeeri.info(e.getMessage());    }
         return lista;
     }
     
@@ -119,11 +122,11 @@ public class AlumnoDao extends DBConn{
                 reporte.add(to);
                 
                 
-                System.out.println("Reportado..!");
+                logeeri.info("Reportado..!");
                 
             }
         } catch (Exception e) {
-            System.out.println("Error en Reporte alumno..." + e.getMessage());
+            logeeri.info("Error en Reporte alumno..." + e.getMessage());
         }
         finally {
          getCerrarConexion();
@@ -140,7 +143,7 @@ public void eliminarRegistroAlumno(int id_alumno) {
             
             if(ps.executeUpdate()==1){
                 
-                System.out.println(" Eliminado");
+                logeeri.info(" Eliminado");
             }
         } catch (Exception e) {
         }
@@ -167,7 +170,7 @@ public boolean actualizarDatosAlumno(AlumnoTo to,int id_alumno ) {
             
            operacion= ps.executeUpdate(); 
          
-         System.out.println("Actualizado");
+        logeeri.info("Actualizado");
           
         } catch (Exception e) {
         } finally {
