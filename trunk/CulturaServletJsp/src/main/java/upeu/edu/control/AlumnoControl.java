@@ -43,7 +43,16 @@ public class AlumnoControl extends HttpServlet {
             switch(opt){
                 case 'I': {
                     ab=new AlumnoBussines();
-                    ab.InsertarAlumno(request);
+                    AlumnoTo to= new AlumnoTo();
+                    to.setCodigo(request.getParameter("codigo")==null?"":request.getParameter("codigo"));
+                    to.setNombre(request.getParameter("nombre")==null?"":request.getParameter("nombre"));
+                    to.setApellidos(request.getParameter("apellidos")==null?"":request.getParameter("apellidos"));
+                    to.setEmail(request.getParameter("email")==null?"":request.getParameter("email"));
+                    to.setTelefono(request.getParameter("telefono")==null?"":request.getParameter("telefono"));
+                    to.setEstado(request.getParameter("estado")==null?"":request.getParameter("estado"));
+                    to.setEap(request.getParameter("eap")==null?"":request.getParameter("eap"));
+                    to.setSexo(request.getParameter("sexo")==null?"":request.getParameter("sexo"));                    
+                    ab.InsertarAlumno(to);
                     ab=new AlumnoBussines();
                     List listaAlumno=ab.reportarAlumno();//trabajamos con seciones 
                     request.getSession().setAttribute("listaAlumno", listaAlumno);//"listaAlumno" es el nombre de la sesion 
@@ -60,7 +69,17 @@ public class AlumnoControl extends HttpServlet {
                 case 'A':{
                     ab= new AlumnoBussines();
                     int idAlumno=Integer.parseInt(request.getParameter("idAlumno"));
-                    ab.ActualizaAlumno(request, idAlumno);
+                        AlumnoTo to= new AlumnoTo();
+
+                        to.setCodigo(request.getParameter("codigo")==null?"":request.getParameter("codigo"));
+                        to.setNombre(request.getParameter("nombre")==null?"":request.getParameter("nombre"));
+                        to.setApellidos(request.getParameter("apellidos")==null?"":request.getParameter("apellidos"));
+                        to.setEmail(request.getParameter("email")==null?"":request.getParameter("email"));
+                        to.setTelefono(request.getParameter("telefono")==null?"":request.getParameter("telefono"));
+                        to.setEstado(request.getParameter("estado")==null?"":request.getParameter("estado"));
+                        to.setEap(request.getParameter("eap")==null?"":request.getParameter("eap"));
+                        to.setSexo(request.getParameter("sexo")==null?"":request.getParameter("sexo"));                    
+                    ab.ActualizaAlumno(to, idAlumno);
                     ab= new AlumnoBussines();
                     List listaAlumno=ab.reportarAlumno();//trabajamos con seciones 
                     request.getSession().setAttribute("listaAlumno", listaAlumno);//"listaAlumno" es el nombre de la sesion 
