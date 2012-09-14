@@ -5,7 +5,6 @@
 package upeu.edu.bussines;
 
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import upeu.edu.dao.AlumnoDao;
 import upeu.edu.to.AlumnoTo;
 
@@ -15,38 +14,19 @@ import upeu.edu.to.AlumnoTo;
  */
 public class AlumnoBussines {
     public AlumnoDao dao;
- public void InsertarAlumno(HttpServletRequest datos){
+ public boolean  InsertarAlumno(AlumnoTo datos){
      
      dao= new AlumnoDao();
-     AlumnoTo to= new AlumnoTo();
-     to.setCodigo(datos.getParameter("codigo")==null?"":datos.getParameter("codigo"));
-     to.setNombre(datos.getParameter("nombre")==null?"":datos.getParameter("nombre"));
-     to.setApellidos(datos.getParameter("apellidos")==null?"":datos.getParameter("apellidos"));
-     to.setEmail(datos.getParameter("email")==null?"":datos.getParameter("email"));
-     to.setTelefono(datos.getParameter("telefono")==null?"":datos.getParameter("telefono"));
-     to.setEstado(datos.getParameter("estado")==null?"":datos.getParameter("estado"));
-     to.setEap(datos.getParameter("eap")==null?"":datos.getParameter("eap"));
-     to.setSexo(datos.getParameter("sexo")==null?"":datos.getParameter("sexo"));
-     dao.insertarAlumno(to);
+     return dao.insertarAlumno(datos);
    
     
     }
- public void ActualizaAlumno(HttpServletRequest datos, int idAlumno){
+ public boolean ActualizaAlumno(AlumnoTo datos, int idAlumno){
      
      dao= new AlumnoDao();
-     AlumnoTo to= new AlumnoTo();
-     
-     to.setCodigo(datos.getParameter("codigo")==null?"":datos.getParameter("codigo"));
-     to.setNombre(datos.getParameter("nombre")==null?"":datos.getParameter("nombre"));
-     to.setApellidos(datos.getParameter("apellidos")==null?"":datos.getParameter("apellidos"));
-     to.setEmail(datos.getParameter("email")==null?"":datos.getParameter("email"));
-     to.setTelefono(datos.getParameter("telefono")==null?"":datos.getParameter("telefono"));
-     to.setEstado(datos.getParameter("estado")==null?"":datos.getParameter("estado"));
-     to.setEap(datos.getParameter("eap")==null?"":datos.getParameter("eap"));
-     to.setSexo(datos.getParameter("sexo")==null?"":datos.getParameter("sexo"));
-     dao.actualizarDatosAlumno(to, idAlumno);
-   
-    
+
+    return dao.actualizarDatosAlumno(datos, idAlumno);
+      
     }
      public AlumnoTo buscarAlumnoId(String id) {
         dao = new AlumnoDao();

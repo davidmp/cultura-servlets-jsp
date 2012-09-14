@@ -13,24 +13,26 @@ import upeu.edu.util.DBConn;
  * @author Alumno
  */ 
 public class AlumnoDao extends DBConn{
+  
     
-    public int insertarAlumno(AlumnoTo to) {
-        int r=0;
+    public boolean insertarAlumno(AlumnoTo to) {
+        boolean r=false;
+        int i=0;
         try {
             getConexionDB();
            ps=con.prepareStatement("insert into cultura.cp_alumno(codigo, nombre, apellidos, eap, sexo, email, telefono, estado) "
                    + "values (?, ?, ?, ?, ?, ?, ?, ?)"); 
-            ps.setString(1, to.getCodigo());
-            ps.setString(2, to.getNombre());
-            ps.setString(3, to.getApellidos());
-            ps.setString(4, to.getEap());
-            ps.setString(5, to.getSexo());
-            ps.setString(6, to.getEmail());
-            ps.setString(7, to.getTelefono());
-            ps.setString(8, to.getEstado());
+            ps.setString(++i, to.getCodigo());
+            ps.setString(++i, to.getNombre());
+            ps.setString(++i, to.getApellidos());
+            ps.setString(++i, to.getEap());
+            ps.setString(++i, to.getSexo());
+            ps.setString(++i, to.getEmail());
+            ps.setString(++i, to.getTelefono());
+            ps.setString(++i, to.getEstado());
 
             if (ps.executeUpdate() == 1) {
-                r=1;    
+                r=true;    
                 System.out.println("Insertado!!!");
             }
         } catch (Exception e) {
@@ -130,10 +132,11 @@ public class AlumnoDao extends DBConn{
 
     }
 public void eliminarRegistroAlumno(int id_alumno) {
-        try {
+    int i=0;    
+    try {
             getConexionDB();
             ps=con.prepareStatement("Delete FROM cultura.cp_alumno WHERE id_alumno=? ");
-            ps.setInt(1, id_alumno);
+            ps.setInt(++i, id_alumno);
             
             if(ps.executeUpdate()==1){
                 
@@ -145,22 +148,24 @@ public void eliminarRegistroAlumno(int id_alumno) {
             getCerrarConexion();
         }
     }
-public void actualizarDatosAlumno(AlumnoTo to,int id_alumno ) {
+public boolean actualizarDatosAlumno(AlumnoTo to,int id_alumno ) {
+    int operacion =0;
+    int i=0;
         try {
              
             getConexionDB();
             ps=con.prepareStatement("update cultura.cp_alumno set codigo=?, nombre=?, apellidos=?,eap=?, sexo=?, email=?, telefono=?, estado=? WHERE id_alumno=?");
-            ps.setString(1, to.getCodigo());
-            ps.setString(2, to.getNombre());
-            ps.setString(3, to.getApellidos());
-            ps.setString(4, to.getEap());
-            ps.setString(5, to.getSexo());
-            ps.setString(6, to.getEmail());
-            ps.setString(7, to.getTelefono());
-            ps.setString(8, to.getEstado());
-            ps.setInt(9, id_alumno);
+            ps.setString(++i, to.getCodigo());
+            ps.setString(++i, to.getNombre());
+            ps.setString(++i, to.getApellidos());
+            ps.setString(++i, to.getEap());
+            ps.setString(++i, to.getSexo());
+            ps.setString(++i, to.getEmail());
+            ps.setString(++i, to.getTelefono());
+            ps.setString(++i, to.getEstado());
+            ps.setInt(++i, id_alumno);
             
-            ps.executeUpdate(); 
+           operacion= ps.executeUpdate(); 
          
          System.out.println("Actualizado");
           
@@ -168,15 +173,6 @@ public void actualizarDatosAlumno(AlumnoTo to,int id_alumno ) {
         } finally {
             getCerrarConexion();
         }
+        if (operacion==1) return true; else return false;
     }
 }
-
- 
-
-
-    
-    
-    
-    
-    
-
